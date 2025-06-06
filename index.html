@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ピポ図鑑</title>
+    <link
+      rel="icon"
+      href="https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/pd.png?v=1728637129476"
+    />
+    <link id="theme-style" rel="stylesheet" href="style.css" />
+    <!-- デフォルトはライトモード -->
+    <script>
+      // システムのテーマに基づいて自動でスタイルシートを適用する関数
+      function updateTheme() {
+        const themeLink = document.getElementById("theme-style");
+
+        // システムのダークモード設定を取得
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          themeLink.href = "style-dark.css"; // ダークモードのスタイルシートを適用
+        } else {
+          themeLink.href = "style.css"; // ライトモードのスタイルシートを適用
+        }
+      }
+
+      // ページ読み込み時にテーマを更新
+      document.addEventListener("DOMContentLoaded", updateTheme);
+
+      // システムのテーマが変更されたときにテーマを更新
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", updateTheme);
+    </script>
+  </head>
+  <body>
+    <header>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        "
+      >
+        <h3><img src="https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/pd.png?v=1728637129476" alt="icon" height="30em">ピポ図鑑</h3>
+        <img
+          src="https://cdn.glitch.global/009077d5-7fd0-45ef-b929-2f08b3536d89/logo.png?v=1728624482047"
+          alt="ピポ会社のロゴ"
+          width="190px"
+          height="50px"
+          onclick="window.location.href = 'https://pipocorp.glitch.me/index.html';"
+          style="float: right"
+        />
+      </div>
+    </header>
+    <main>
+      <section class="info">
+        <div style="display: flex">
+          <select id="characterSelect" size="7" onchange="showCharacterInfo()">
+            <option disabled>キャラを選択してください。</option>
+            <option selected value="選択されていません">
+              選択されていません
+            </option>
+            <option value="ピポ">ピポ</option>
+            <option value="ピポポ">ピポポ</option>
+            <option value="ピポママ">ピポママ</option>
+            <option value="ピポパパ">ピポパパ</option>
+            <option value="ピポばあちゃん">ピポばあちゃん</option>
+            <option value="ピポじいちゃん">ピポじいちゃん</option>
+            <option value="ピポ先生">ピポ先生</option>
+            <option value="ピポロボ">ピポロボ</option>
+            <option value="ピポロボの充電器">ピポロボの充電器</option>
+            <option value="充電しているピポロボ">充電しているピポロボ</option>
+            <option value="ピポ会社の社員">ピポ会社の社員</option>
+            <option value="悠ピポ">悠ピポ</option>
+            <option value="ピポタ">ピポタ</option>
+            <option value="ピポリン">ピポリン</option>
+            <option value="シマピポ">シマピポ</option>
+          </select>
+
+          <img id="characterImage" style="max-height: 170px" />
+        </div>
+        <p class="gra" id="characterInfo">読み込み中...</p>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2024 pipo.corp. All Rights Reserved.</p>
+    </footer>
+    <script>
+      let select = document.getElementById("characterSelect");
+      let selectedCharacter = select.value;
+
+      function showCharacterInfo() {
+        select = document.getElementById("characterSelect");
+        selectedCharacter = select.value;
+        let moredisp = "";
+        let img = ""; // 画像のURLを格納する変数
+
+        switch (selectedCharacter) {
+          case "選択されていません":
+            moredisp = "。キャラを選択してください。";
+            img = "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/none.png?v=1732340027012"; // 画像は非表示
+            break;
+          case "ピポ":
+            moredisp =
+              "は、ピポ会社の守り神です。性別はオスです。好きな人はピポポです。好きな食べ物はうどんです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D.jpg?v=1732322964725"; // 画像のURLを設定
+            break;
+          case "ピポポ":
+            moredisp =
+              "は、ピポ会社の守り神です。性別はメスです。好きな人はピポです。好きな食べ物はおはぎです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%83%9D.jpg?v=1732322960144";
+            break;
+          case "ピポママ":
+            moredisp =
+              "は、ピポ会社のパートをしています。性別はメスです。好きな人はピポパパです。好きな食べ物はラーメンです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%83%9E%E3%83%9E.jpg?v=1732322950217";
+            break;
+          case "ピポパパ":
+            moredisp =
+              "は、ピポ研究所の博士をピポじいちゃんから引き継いでいます。性別はオスです。好きな人はピポママです。好きな食べ物はカレーです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%83%91%E3%83%91.jpg?v=1732322943558";
+            break;
+          case "ピポばあちゃん":
+            moredisp =
+              "は、元ピポ研究所の助手でした。性別はメスです。好きな人はピポとピポポです。好きな食べ物は和食全般です。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%81%B0%E3%81%82%E3%81%A1%E3%82%83%E3%82%93.jpg?v=1732322939458";
+            break;
+          case "ピポじいちゃん":
+            moredisp =
+              "は、元ピポ研究所の博士でした。性別はオスです。好きな人はピポとピポポです。好きな食べ物は和食全般です。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%81%98%E3%81%84%E3%81%A1%E3%82%83%E3%82%93.jpg?v=1732322930757";
+            break;
+          case "ピポ先生":
+            moredisp =
+              "は、ピポ学校の教員です。性別はオスです。好きな人はクラスの生徒で、特にピポポが好きです。好きな食べ物はみかんです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E5%85%88%E7%94%9F.jpg?v=1732322924749";
+            break;
+          case "ピポロボ":
+            moredisp =
+              "は、ピポが作ったAIロボです。性別は不明です。好きな場所はWI-FIスポットです。好きな食べ物は電気です。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%83%AD%E3%83%9C.jpg?v=1732322918455";
+            break;
+          case "ピポロボの充電器":
+            moredisp = "は、ピポロボを充電するために使われます。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%83%AD%E3%83%9C%E3%81%AE%E5%85%85%E9%9B%BB%E5%99%A8.jpg?v=1732322914242";
+            break;
+          case "充電しているピポロボ":
+            moredisp =
+              "は、たいてい寝ています。(写真に写るから悠ピポが起こしました。)";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E5%85%85%E9%9B%BB%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%83%94%E3%83%9D%E3%83%AD%E3%83%9C.jpg?v=1732322910353";
+            break;
+          case "ピポ会社の社員":
+            moredisp =
+              "は、仕事を毎日頑張っています。性別はオスです。好きな人はピポママです。好きな食べ物はりんごです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E4%BC%9A%E7%A4%BE%E3%81%AE%E7%A4%BE%E5%93%A1.jpg?v=1732322901643";
+            break;
+          case "悠ピポ":
+            moredisp =
+              "は、悠(ピポ会社の社長)がピポの世界を見るときに使われます。性別はオスです。好きな人はピポです。好きな食べ物はたらこパスタです。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E6%82%A0%E3%83%94%E3%83%9D.jpg?v=1732322898894";
+            break;
+          case "ピポリン":
+            moredisp =
+              "はピポとピポポの子どもで、ピポファミリーの次世代を担うキャラクター。金髪は生まれつきで、明るく元気いっぱいの性格が魅力。ピポ語を自然に話し、絵文字を使ったコミュニケーションが得意。ポジティブな言葉をよく使う。ピポ科の中でも、特に創造力豊かで、新しいピポ語や遊びを考えるのが得意。家族みんなで転がって遊ぶのが大好き！";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%83%AA%E3%83%B3.png?v=1732322970557";
+            break;
+          case "ピポタ":
+            moredisp =
+              "はピポとピポポがある日散歩中に拾った犬。白と黒の模様がピポファミリーに似ていて、すぐに家族として迎え入れられた。性格はいたずら好きで人懐っこく、家族のことをいつも守ろうとする。ピポリンと特に仲が良く、二人で転がって遊ぶこともある。ピポタは言葉を話せないけど、ピポ語を理解しているようで、家族の感情や指示を察するのが得意。特技はスピード転がり！ピポ科と一緒に転がる姿が近所でも人気。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%83%94%E3%83%9D%E3%82%BF.png?v=1732322976598";
+            break;
+          case "シマピポ":
+            moredisp =
+              "は、外見として、シマピポはピポ科の中でも珍しい縞模様を持つキャラクター。黒と白の縞の頭部の模様が印象的で、転がるたびに視覚的に目立つ！明るく元気な性格に加えて、シマピポはチームの中でアイデアマン的な役割を果たすことが多い。シマピポはみんなを盛り上げるために即興ダンスを披露することが得意で、その動きはピポ語のリズムとリンクしている。";
+            img =
+              "https://cdn.glitch.global/52ee229f-09d3-4507-a7ed-89762a74d12c/%E3%82%B7%E3%83%9E%E3%83%94%E3%83%9D.png?v=1732322891426";
+            break;
+          default:
+            moredisp = "不明なキャラクターです。";
+            img = ""; // 画像は非表示
+            break;
+        }
+
+        document.getElementById("characterInfo").innerText =
+          selectedCharacter + moredisp;
+
+        const characterImage = document.getElementById("characterImage");
+        characterImage.src = img; // 画像のURLを設定
+        characterImage.style.display = img ? "block" : "none"; // 画像がある場合は表示
+      }
+
+      // ページが読み込まれたときに「選択されていません」を表示
+      document.addEventListener("DOMContentLoaded", function () {
+        showCharacterInfo(); // 引数は渡さずに呼び出す
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "kleeone";
+  src: url("https://cdn.glitch.global/009077d5-7fd0-45ef-b929-2f08b3536d89/kleeone.ttf?v=1728624644168")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  word-wrap: break-word;
+}
+
+a,
+button {
+  color: #66aaff; /* リンクの色を明るい青に変更 */
+}
+
+textarea,
+body,
+button,
+input,
+select {
+  font-family: "kleeone", sans-serif;
+}
+.gra {
+  font-weight: bold;
+  background: linear-gradient(90deg, SlateBlue, purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+button,
+input {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em; /* 少し小さめにして全体のバランスを良く */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* アニメーション追加 */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ボタンに軽い影を追加 */
+}
+select {
+  background-color: #c8c895;
+  color: #000000;
+  border-radius: 5px;
+  font-size: 1em; /* 少し小さめにして全体のバランスを良く */
+  cursor: default;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* ボタンに軽い影を追加 */
+}
+select option:disabled {
+  visibility: visible; /* デフォルトでは非表示になっているが、強制的に表示 */
+  pointer-events: none; /* クリック不可にする */
+  cursor: default;
+  opacity: 1;
+  color:#000066;
+  font-weight:bold;
+}
+select option:hover {
+  cursor:pointer;
+}
+button:hover,
+input:hover {
+  background-color: #0056b3; /* ホバー時の色を少し暗くする */
+  transform: translateY(-2px); /* ホバー時に少し浮かせる */
+}
+
+header {
+  background-color: #004040; /* ヘッダー背景色をダークに */
+  color: #ffffff;
+  text-align: center;
+  padding: 30px;
+  font-size: 2em;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a; /* ダークグレー背景 */
+  color: #e0e0e0; /* テキスト色を明るく */
+}
+
+main {
+  flex: 1;
+  padding: 40px 20px;
+  background: linear-gradient(
+    to bottom,
+    #333333,
+    #222222
+  ); /* ダークグラデーション */
+  box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+footer {
+  background-color: #000000; /* フッターを真っ黒 */
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  font-size: 1em;
+  letter-spacing: 1px;
+  border-top: 5px solid #00c6ff;
+  box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info {
+  background: #333333; /* 情報ボックスの背景 */
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media print {
+  header,
+  .menubar,
+  .settings,
+  footer {
+    display: none;
+  }
+  .changed {
+    background-color: #ffff99;
+  }
+}
